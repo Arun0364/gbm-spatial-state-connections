@@ -1,0 +1,42 @@
+\documentclass[11pt]{article}
+\usepackage[paperwidth=7in,paperheight=11in,margin=0.5in]{geometry}
+\usepackage{newtxtext,newtxmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\pagestyle{empty}
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Output:}}
+\algrenewcommand{\algorithmiccomment}[1]{\hfill$\triangleright$ #1}
+\renewcommand{\thealgorithm}{2.1}
+\begin{document}
+\begin{algorithm}[h]
+\caption{\textbf{Simplex fitting in UNMIX.} Fits a simplex around the tumor spots in principal component space and expresses each spot as a convex combination of its vertices (the archetypes).}
+\begin{algorithmic}
+\Require normalized expression matrix $M$ of tumor spots; number of archetypes $K$
+\Ensure archetype profiles $\mathbf{c}_1,\dots,\mathbf{c}_K$; weights $w_{ik}$ for every spot $i$
+\Function{Unmix}{$M, K$}
+  \State $\{\mathbf{p}_i\} \gets$ \Call{PCAScores}{$M,\ K-1$} \Comment{one point per spot}
+  \For{$r \gets 1$ to $5$} \Comment{random restarts}
+    \State choose two starting vertices with probability $\propto \lVert \mathbf{p}_a-\mathbf{p}_b\rVert^{K}$
+    \While{fewer than $K$ vertices have been chosen}
+      \State add a point as a vertex with probability $\propto$ volume of the simplex it forms
+    \EndWhile
+    \While{some point lies outside the simplex \textbf{and} at most $1000$ iterations}
+      \State $F \gets$ face with the most points lying outside it
+      \State move the vertices of $F$ outward until the farthest outside point lies on $F$
+    \EndWhile
+    \State $V_r \gets$ vertices of the enclosing simplex; \ $\mathrm{vol}_r \gets$ its volume
+  \EndFor
+  \State $\{\mathbf{v}_k\} \gets V_r$ with the smallest $\mathrm{vol}_r$
+  \For{each spot $i$}
+    \State solve $\sum_{k} w_{ik}\mathbf{v}_k = \mathbf{p}_i$ with $\sum_{k} w_{ik} = 1$ \Comment{barycentric weights}
+  \EndFor
+  \For{$k \gets 1$ to $K$}
+    \State $\mathbf{c}_k \gets \bar{\mathbf{x}} + \mathbf{U}_{K-1}\,\mathbf{v}_k$ \Comment{back to gene space}
+  \EndFor
+  \State \Return $\{\mathbf{c}_k\},\ \{w_{ik}\}$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+\end{document}

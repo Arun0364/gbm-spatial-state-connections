@@ -1,0 +1,37 @@
+\documentclass[11pt]{article}
+\usepackage[paperwidth=7in,paperheight=11in,margin=0.5in]{geometry}
+\usepackage{newtxtext,newtxmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\pagestyle{empty}
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Output:}}
+\algrenewcommand{\algorithmiccomment}[1]{\hfill$\triangleright$ #1}
+\renewcommand{\thealgorithm}{3.2}
+\begin{document}
+\begin{algorithm}[h]
+\caption{\textbf{Spatial simulator with a known lineage (forward mode).} Grows a tissue along a chosen state tree and produces Visium-like spots with known state and clone fractions.}
+\begin{algorithmic}
+\Require state tree $\mathcal{T}$ rooted at NPC; switching probability $r$; death probability $p_d$; final size $n$; mixing level $m$
+\Ensure spot counts; true state fractions; true clone fractions
+\State draw profiles: root $\mathbf{c}_{\mathrm{NPC}}$ at random; each child $\mathbf{c}_k \gets \mathbf{c}_{\mathrm{parent}(k)} + \mathcal{N}(0, \sigma^2 I)$
+\State start with one NPC cell at the origin
+\While{fewer than $n$ cells}
+  \State each cell divides; daughters move by $\mathcal{N}(0, I_2)$ and inherit state, clone and drift
+  \For{each cell in state $j$}
+    \State switch to each child $k$ of $j$ in $\mathcal{T}$ with probability $r$
+  \EndFor
+  \State remove each cell with probability $p_d$; rescale positions so the tissue expands
+    \State at generations 3 and 4, create new clones with copy-number changes \Comment{clone test only}
+\EndWhile
+\For{each spot on a hexagonal grid}
+  \State collect about 8 neighboring cells; add $\frac{m}{1-m}$ times as many random cells \Comment{mixing}
+  \State rate $\gets$ mean over cells of $\exp(\mathbf{c}_{\mathrm{state}} + \text{drift}) \times$ copy number $/\,2$
+  \State counts $\gets$ Poisson(rate scaled to a library size near 6,000)
+  \State record true state fractions and clone fractions
+\EndFor
+\State \Return counts, state fractions, clone fractions
+\end{algorithmic}
+\end{algorithm}
+\end{document}

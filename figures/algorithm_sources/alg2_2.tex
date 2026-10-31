@@ -1,0 +1,39 @@
+\documentclass[11pt]{article}
+\usepackage[paperwidth=7in,paperheight=11in,margin=0.5in]{geometry}
+\usepackage{newtxtext,newtxmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\pagestyle{empty}
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Output:}}
+\algrenewcommand{\algorithmiccomment}[1]{\hfill$\triangleright$ #1}
+\renewcommand{\thealgorithm}{2.2}
+\begin{document}
+\begin{algorithm}[h]
+\caption{\textbf{Pseudo-bulk construction and spot-level clone fractions.} Builds spatially local pseudo-bulks for MIMO and maps the inferred clone fractions back to individual spots.}
+\begin{algorithmic}
+\Require tumor spots $S$ with coordinates and expression; $B = 300$ pseudo-bulks; $m = 15$ spots per pseudo-bulk; fixed random seed; reference profiles $R$
+\Ensure clone fractions $\hat{f}_{ic}$ for each clone $c$ and every spot covered by at least one pseudo-bulk
+\Function{PseudobulkFractions}{$S, B, m, R$}
+  \State $\{a_1,\dots,a_B\} \gets$ \Call{RandomSample}{$S, B$} \Comment{anchors; selection stored}
+  \For{$j \gets 1$ to $B$}
+    \State $G_j \gets$ the $m$ tumor spots spatially nearest to $a_j$
+    \State $\mathbf{b}_j \gets$ mean expression of the spots in $G_j$
+  \EndFor
+  \State $\{f_{jc}\} \gets$ \Call{MIMO}{$\{\mathbf{b}_j\}, R$} \Comment{clone fractions per pseudo-bulk}
+  \For{each spot $i \in S$}
+    \State $J(i) \gets \{\, j : i \in G_j \,\}$
+    \If{$J(i) \neq \emptyset$}
+      \For{each clone $c$}
+        \State $\hat{f}_{ic} \gets \frac{1}{|J(i)|}\sum_{j \in J(i)} f_{jc}$ \Comment{Equation 2.4}
+      \EndFor
+    \Else
+      \State leave spot $i$ without a clone fraction
+    \EndIf
+  \EndFor
+  \State \Return $\{\hat{f}_{ic}\}$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+\end{document}

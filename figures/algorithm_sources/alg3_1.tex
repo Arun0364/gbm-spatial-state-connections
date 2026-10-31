@@ -1,0 +1,37 @@
+\documentclass[11pt]{article}
+\usepackage[paperwidth=7in,paperheight=11in,margin=0.5in]{geometry}
+\usepackage{newtxtext,newtxmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\pagestyle{empty}
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Output:}}
+\algrenewcommand{\algorithmiccomment}[1]{\hfill$\triangleright$ #1}
+\renewcommand{\thealgorithm}{3.1}
+\begin{document}
+\begin{algorithm}[h]
+\caption{\textbf{Directed transitions and trees from pseudotime.} Builds the transition matrix $\hat{T}$ from diffusion pseudotime and derives three trees rooted at NPC.}
+\begin{algorithmic}
+\Require tumor spots with state weights $w_{ik}$ and marker gene expression; root state NPC
+\Ensure $\hat{T}$; greedy arborescence; most probable arborescence; MST
+\State $G \gets$ 15-nearest-neighbor graph of spots in the first 15 principal components
+\State $r \gets \arg\max_i w_{i,\mathrm{NPC}}$ \Comment{start spot}
+\State $\tau \gets$ \Call{DPT}{$G, r$}
+\State $s(i) \gets \arg\max_k w_{ik}$ for every spot $i$ \Comment{dominant state}
+\State $N \gets 0$
+\For{each edge $(i, i')$ of $G$ with $\tau(i') > \tau(i)$}
+  \State $N_{s(i),\,s(i')} \gets N_{s(i),\,s(i')} + 1$
+\EndFor
+\State $\hat{T}_{jk} \gets N_{jk} / \sum_l N_{jl}$ \Comment{Equation 3.4}
+\State $S \gets \{\mathrm{NPC}\}$; \ $A_g \gets \emptyset$
+\While{$S$ does not contain every state}
+  \State $(j, k) \gets \arg\max_{j \in S,\, k \notin S} \hat{T}_{jk}$
+  \State add $(j, k)$ to $A_g$; \ add $k$ to $S$ \Comment{greedy arborescence}
+\EndWhile
+\State $A^{*} \gets$ \Call{ChuLiuEdmonds}{$\log \hat{T}$, NPC} \Comment{Equation 3.5}
+\State $D_{jk} \gets 1 - (\hat{T}_{jk} + \hat{T}_{kj})/2$; \ $M \gets$ \Call{MST}{$D$} rooted at NPC \Comment{Equation 3.6}
+\State \Return $\hat{T},\ A_g,\ A^{*},\ M$
+\end{algorithmic}
+\end{algorithm}
+\end{document}
