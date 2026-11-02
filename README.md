@@ -29,7 +29,7 @@ All data are public on Gene Expression Omnibus and are not included here.
 
 - **MIMO** (Lei et al., 2021) from the Schwartz lab, https://github.com/CMUSchwartzLab/FISH_deconvolution. Clone it inside this repository folder, alongside `Code/`. `Code/mimo_solve.py` imports `MIMO/MIMOsolver/MIMOsolver.py` from that clone. MIMO needs Gurobi (tested with Gurobi 13.0 on Python 3.13).
 - **UNMIX** (Schwartz and Shackney, 2010) from the Schwartz lab. `Unmix_tumor_spatial.m` and `Unmix_replicate.m` call its MATLAB function `Unmix(M, k)`, which is not included. Place `Unmix.m` in `Code/`, since both `.m` files add `Code/` to the MATLAB path. `Code/unmix.py` is a Python port written for this thesis, used in the simulations (Section 3.4).
-- **MosaicSim** (Srivatsa et al., 2023) from the Schwartz lab, https://github.com/CMUSchwartzLab/MosaicSim. `Code/spatial_coalescent_sim.py` draws the cell genealogy with msprime (Kelleher et al., 2016; Baumdicker et al., 2022) using the same call as MosaicSim. No MosaicSim code is included.
+- **MosaicSim** (Srivatsa et al., 2023) from the Schwartz lab, https://github.com/CMUSchwartzLab/MosaicSim. `Code/spatial_coalescent_sim.py` draws the cell genealogy with msprime (Baumdicker et al., 2022; Kelleher et al., 2016) using the same call as MosaicSim. No MosaicSim code is included.
 - **g:Profiler** web API (Kolberg et al., 2023) for the pathway tests in `chapter2_analysis.py`, so that step needs internet access.
 
 ## Paths
@@ -122,7 +122,7 @@ zsh Code/run_replicate.sh analyze
 
 | Script | Thesis |
 |---|---|
-| `tree_assumptions.py` | three-point and four-point tests (Table 3.5), hidden-ancestor score and six-state trees |
+| `tree_assumptions.py` | three-point and four-point tests (Table 3.5), hidden-ancestor score (Section 3.7), and six-state trees (Section 3.5) |
 
 ### Shared modules
 
