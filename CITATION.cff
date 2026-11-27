@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the thesis below."
+title: "gbm-spatial-state-connections"
+type: software
+authors:
+  - given-names: Arunannamalai
+    family-names: Sujatha Bharath Raj
+    affiliation: Carnegie Mellon University
+repository-code: "https://github.com/Arun0364/gbm-spatial-state-connections"
+keywords:
+  - glioblastoma
+  - spatial transcriptomics
+  - cell states
+  - tumor phylogenetics
+  - archetypal analysis
+preferred-citation:
+  type: thesis
+  thesis-type: "Master's thesis"
+  title: "Inferring relationships among glioblastoma cell states from spatial transcriptomics: from archetypal analysis to supported connections"
+  authors:
+    - given-names: Arunannamalai
+      family-names: Sujatha Bharath Raj
+  institution:
+    name: Carnegie Mellon University
+    city: Pittsburgh
+  year: 2026

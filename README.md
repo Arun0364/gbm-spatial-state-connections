@@ -1,23 +1,71 @@
+<div align="center">
+
 # gbm-spatial-state-connections
 
-Code for the MS thesis "Inferring relationships among glioblastoma cell states from spatial transcriptomics: from archetypal analysis to supported connections" by Arun Sujatha Bharath Raj, Schwartz Lab, Carnegie Mellon University (2026).
+### Inferring relationships among glioblastoma cell states from spatial transcriptomics: from archetypal analysis to supported connections
 
-The thesis estimates the four Neftel cell states (AC, MES, NPC, OPC) in glioblastoma Visium sections, matches them to clones, and builds trees of the states from their expression profiles. A spatial simulator is used to test how well the trees can be recovered, and the connections found in two sections are checked in 22 public sections.
+Arun Sujatha Bharath Raj<br>
+Schwartz Lab, Carnegie Mellon University<br>
+Master's thesis, Quantitative Biology and Bioinformatics, 2026
+
+[Key findings](#key-findings) &ensp;·&ensp;
+[Data](#data) &ensp;·&ensp;
+[Steps and scripts](#steps-and-scripts) &ensp;·&ensp;
+[Citation](#citation)
+
+![Python 3.14](https://img.shields.io/badge/python-3.14-blue)
+![R 4.5.1](https://img.shields.io/badge/R-4.5.1-blue)
+![Status: thesis defended](https://img.shields.io/badge/status-thesis%20defended-green)
+![Evidence: computational only](https://img.shields.io/badge/evidence-computational%20only-lightgrey)
+
+<img src="docs/assets/overview.png" width="620" alt="Overview of the thesis. Two glioblastoma Visium sections and 22 public sections go into Chapter 2, which estimates cell state weights per spot with archetypal analysis and marker-guided weights, and clone fractions with MIMO. The state weights go into Chapter 3, which builds neighbor joining and T-hat trees, validates them on simulated tissue with a known lineage, finds connections supported by both methods, and checks them in the 22 public sections.">
+
+<sub>Overview of the thesis (Figure 1.1).</sub>
+
+</div>
+
+## Overview
+
+Glioblastoma (GBM) contains four malignant cell states: astrocyte-like (AC), mesenchymal-like (MES), neural progenitor-like (NPC) and oligodendrocyte progenitor-like (OPC). Whether one state gives rise to the others, or cells switch between them, could affect how GBM is treated. Single-cell data lose where each cell was. Spatial transcriptomics keeps position, but each Visium spot mixes several cells.
+
+This repository holds the code for a thesis that
+
+1. estimates cell states and clones in two Visium sections, G4_ST2 and G740_ST1, without a matched single-cell reference,
+2. builds trees of the states with two methods, neighbor joining (NJ) on expression similarity and a directed tree (T̂) from pseudotime transitions,
+3. tests the tree methods in a spatial simulator with a known lineage, and
+4. checks whether the connections found in the two sections recur in 22 public sections from nine tumors.
+
+All evidence is computational. There is no laboratory work.
+
+## Key findings
+
+<p align="center">
+  <img src="docs/assets/supported_connections.png" width="620" alt="Heatmaps for G4_ST2 and G740_ST1 showing, for each state connection, the share of trees that contain it under archetype weights, marker-guided weights, marker-free trees and six robustness checks.">
+</p>
+
+<sub>Share of trees that contain each connection, across weight methods and robustness checks (Figure 3.4).</sub>
+
+- **Marker-guided weights fix two problems of archetypal analysis.** Archetypal analysis placed the NPC-like archetype outside the spots and could give two archetypes the same label. Marker-guided weights resolved both and showed spatially clustered states.
+- **Tree recovery in simulation.** With marker-guided weights, exact tree recovery by NJ rose from 36% to 97%. Connections that both methods agreed on were in the true tree 99.7% of the time.
+- **Real tissue is harder.** In the public sections, the two methods disagreed on the whole tree in 77.3% of cases, against 7.9% in simulation.
+- **Supported connections.** AC–NPC and AC–MES in G4_ST2, and AC–OPC and MES–NPC in G740_ST1. All four recurred in the public sections, but none was strong in more than four of the nine tumors, which suggests the connections may be tumor-specific.
+- **Clones are not independent evidence.** MIMO clone estimates matched the states moderately, but in simulation they followed the input states in 76 of 80 clean tissues.
 
 ## Layout
 
 ```
 Code/                      all scripts, flat, because they import each other by name
 figures/algorithm_sources/ LaTeX sources for Algorithms 2.1, 2.2, 3.1 and 3.2
+docs/assets/               figures shown in this README
 renv.lock                  R environment (R 4.5.1)
 requirements.txt           Python environment (Python 3.14)
-Data/                      not tracked, see Data
+Data/                      not tracked except Data/README.md, see Data
 Results/                   not tracked, created by the scripts
 ```
 
 ## Data
 
-All data are public on Gene Expression Omnibus and are not included here.
+All data are public on Gene Expression Omnibus and are not included here. [`Data/README.md`](Data/README.md) lists the folder layout the scripts expect.
 
 | Folder under `Data/` | Source | Used in |
 |---|---|---|
@@ -142,3 +190,11 @@ Rscript -e 'install.packages("renv"); renv::restore()'
 ```
 
 MATLAB is needed for the two `.m` files.
+
+## Citation
+
+If you use this code, please cite the thesis:
+
+> Sujatha Bharath Raj, A. (2026). *Inferring relationships among glioblastoma cell states from spatial transcriptomics: From archetypal analysis to supported connections* [Master's thesis, Carnegie Mellon University].
+
+GitHub also shows a "Cite this repository" button from [`CITATION.cff`](CITATION.cff).
