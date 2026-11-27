@@ -3,7 +3,7 @@ import argparse
 from pathlib import Path
 import numpy as np
 
-MIMO_DIR = Path("/Users/arun/Desktop/Research/FISH_deconvolution/MIMO/MIMOsolver")
+MIMO_DIR = Path(__file__).resolve().parents[1] / "FISH_deconvolution" / "MIMO" / "MIMOsolver"
 sys.path.insert(0, str(MIMO_DIR))
 import MIMOsolver as gs
 

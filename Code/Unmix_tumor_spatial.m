@@ -1,7 +1,8 @@
-addpath('/Users/arun/Desktop/Research/Code');
+root = fileparts(fileparts(mfilename('fullpath')));
+addpath(fullfile(root, 'Code'));
 k = 4;
 samples = {'G740_ST1', 'G4_ST2'};
-base_dir = '/Users/arun/Desktop/Research/Results/';
+base_dir = fullfile(root, 'Results');
 in_dir  = fullfile(base_dir, 'Unmix_tumor_k4_markers');
 out_dir = fullfile(base_dir, 'Unmix_tumor_k4_markers');
 

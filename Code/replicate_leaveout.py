@@ -1,7 +1,7 @@
 from pathlib import Path
 import pandas as pd
 
-BASE = Path("/Users/arun/Desktop/Research")
+BASE = Path(__file__).resolve().parents[1]
 SUMMARY = BASE / "Results" / "replicate_summary"
 OUT = SUMMARY / "leaveout"
 CONNECTIONS = ["NPC-OPC", "AC-NPC", "MES-NPC", "AC-MES", "AC-OPC", "MES-OPC"]

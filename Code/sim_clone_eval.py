@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import linear_sum_assignment
 
-BASE    = Path("/Users/arun/Desktop/Research")
+BASE    = Path(__file__).resolve().parents[1]
 CASES   = Path(sys.argv[1]) if len(sys.argv) > 1 else BASE / "Results/sim_clones/cases"
 OUT_CSV = Path(sys.argv[2]) if len(sys.argv) > 2 else BASE / "Results/sim_clones/clone_results.csv"
 

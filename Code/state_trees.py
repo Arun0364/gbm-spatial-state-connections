@@ -7,7 +7,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-CODE = Path("/Users/arun/Desktop/Research/Code")
+CODE = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODE))
 from tree_compare import (neighbor_joining, euclid, zscore_cols, nj_bootstrap, nj_state_graph, greedy_arborescence,
                           optimal_arborescence, rank_arborescences, that_mst, case_name)

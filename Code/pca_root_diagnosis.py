@@ -9,7 +9,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-BASE = Path("/Users/arun/Desktop/Research")
+BASE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(BASE / "Code"))
 from spatial_coalescent_sim import simulate, state_profiles, DEFAULTS, STATES, ROOT, STATE_COLORS
 from sim_aa_run import aa_weights

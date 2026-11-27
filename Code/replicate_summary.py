@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import scipy.io
 
-BASE = Path("/Users/arun/Desktop/Research")
+BASE = Path(__file__).resolve().parents[1]
 RESULTS = BASE / "Results"
 OUT = RESULTS / "replicate_summary"
 CONNECTIONS = ["NPC-OPC", "AC-NPC", "MES-NPC", "AC-MES", "AC-OPC", "MES-OPC"]

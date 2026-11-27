@@ -5,7 +5,7 @@ import pandas as pd
 import scanpy as sc
 import scipy.io
 
-BASE = "/Users/arun/Desktop/Research"
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SAMPLES = {
     "G740_ST1": os.path.join(BASE, "Results/DimRed/G740_ST1/G740_ST1_pca_tsne_umap.h5ad"),

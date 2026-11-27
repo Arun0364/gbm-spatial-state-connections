@@ -17,7 +17,7 @@ from spatial_coalescent_sim import simulate, STATES, ROOT
 from sim_grid_run import dpt_and_graph, nj_graph, MIN_STATE_FRACTION, MAX_REDRAWS
 from unmix import unmix
 
-BASE    = Path("/Users/arun/Desktop/Research")
+BASE    = Path(__file__).resolve().parents[1]
 OUT_CSV = BASE / "Results/sim_improve/improve_results.csv"
 
 CONDITIONS = {

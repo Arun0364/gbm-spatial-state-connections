@@ -9,7 +9,7 @@ import h5py
 from scipy.spatial import cKDTree
 from scipy.stats import norm
 
-BASE      = "/Users/arun/Desktop/Research"
+BASE      = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 AA_DIR    = f"{BASE}/Results/PostAA_tumor_unmix_k4_markers"
 UNMIX_DIR = f"{BASE}/Results/Unmix_tumor_k4_markers"
 OUT_DIR   = sys.argv[1] if len(sys.argv) > 1 else f"{BASE}/Results/morans_i_markers"

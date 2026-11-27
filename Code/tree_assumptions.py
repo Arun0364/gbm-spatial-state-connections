@@ -11,7 +11,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-CODE = Path("/Users/arun/Desktop/Research/Code")
+CODE = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODE))
 from tree_compare import nj_bootstrap, nj_state_graph, patristic, euclid, zscore_cols
 from three_point_test import describe

@@ -10,7 +10,11 @@ options(future.globals.maxSize = 8 * 1024^3)
 args <- commandArgs(trailingOnly = TRUE)
 section_dir <- args[1]
 section <- args[2]
-code_dir <- "/Users/arun/Desktop/Research/Code"
+project_root <- local({
+  a <- grep("^--file=", commandArgs(FALSE), value = TRUE)
+  if (length(a)) normalizePath(file.path(dirname(sub("^--file=", "", a[1])), "..")) else getwd()
+})
+code_dir <- file.path(project_root, "Code")
 msg <- function(...) cat(sprintf(...), "\n")
 
 exprs <- parse(file.path(code_dir, "Neftel_States_Visium_Pipeline.R"))

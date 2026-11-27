@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from tree_compare import all_rooted_trees, case_name
 
-BASE    = Path("/Users/arun/Desktop/Research")
+BASE    = Path(__file__).resolve().parents[1]
 OUT_DIR = BASE / "Results/sim_coalescent/examples"
 
 STATES       = ["NPC", "AC", "OPC", "MES"]

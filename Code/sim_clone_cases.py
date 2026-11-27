@@ -15,7 +15,7 @@ from tree_compare import all_rooted_trees, case_name
 from spatial_coalescent_sim import simulate, STATES, ROOT
 from sim_aa_run import aa_weights
 
-BASE    = Path("/Users/arun/Desktop/Research")
+BASE    = Path(__file__).resolve().parents[1]
 OUT_DIR = BASE / "Results/sim_clones/cases"
 
 CONDITIONS = {

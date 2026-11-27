@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import linear_sum_assignment
 
-CODE = Path("/Users/arun/Desktop/Research/Code")
+CODE = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODE))
 from tree_compare import all_rooted_trees, case_name, rf_rooted, optimal_arborescence, greedy_arborescence
 from spatial_coalescent_sim import simulate, STATES, ROOT
@@ -19,7 +19,7 @@ from sim_grid_run import that_matrices, nj_graph, MIN_STATE_FRACTION, MAX_REDRAW
 from sim_improve_run import marker_matrix, label_archetypes
 from unmix import unmix
 
-BASE    = Path("/Users/arun/Desktop/Research")
+BASE    = Path(__file__).resolve().parents[1]
 OUT_CSV = BASE / "Results/sim_ablation/ablation_results.csv"
 CONDITIONS = {"Real-purity": {"mix": 0.75}, "Real-purity-coalescent": {"lineage": "coalescent", "mix": 0.75}}
 VARIANTS = ["baseline", "true_labels", "true_root_weights", "true_dpt_start", "true_labels_and_root", "true_weights"]

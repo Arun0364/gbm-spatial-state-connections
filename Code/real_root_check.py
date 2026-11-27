@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 import scanpy as sc
 
-CODE = Path("/Users/arun/Desktop/Research/Code")
+CODE = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODE))
 from tree_compare import (neighbor_joining, euclid, zscore_cols, nj_state_graph, greedy_arborescence,
                           optimal_arborescence, that_mst)

@@ -1,6 +1,7 @@
-addpath('/Users/arun/Desktop/Research/Code');
+root = fileparts(fileparts(mfilename('fullpath')));
+addpath(fullfile(root, 'Code'));
 k = 4;
-base_dir = '/Users/arun/Desktop/Research/Results/';
+base_dir = fullfile(root, 'Results');
 runs = {
     'GSE242352', 'SPA1_D'; 'GSE242352', 'SPA2_A'; 'GSE242352', 'SPA5_D';
     'GSE242352', 'SPA7_D'; 'GSE242352', 'SPA8_A';

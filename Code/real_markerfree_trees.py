@@ -7,7 +7,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-CODE = Path("/Users/arun/Desktop/Research/Code")
+CODE = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODE))
 from tree_compare import case_name, compare
 from sim_improve_run import label_archetypes

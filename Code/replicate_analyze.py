@@ -12,7 +12,7 @@ import scipy.io
 import scanpy as sc
 from scipy.optimize import linear_sum_assignment
 
-CODE = Path("/Users/arun/Desktop/Research/Code")
+CODE = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODE))
 from tree_compare import case_name
 from real_marker_trees import STATES, ROOT, neftel_markers, norm_counts
@@ -24,7 +24,7 @@ from marker_weights import weights_gene_sd
 from unmix import unmix
 from state_trees import build
 
-BASE = Path("/Users/arun/Desktop/Research")
+BASE = Path(__file__).resolve().parents[1]
 RESULTS = BASE / "Results"
 ESTIMATES = ["archetype", "marker", "markerfree"]
 CONNECTIONS = ["NPC-OPC", "AC-NPC", "MES-NPC", "AC-MES", "AC-OPC", "MES-OPC"]

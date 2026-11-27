@@ -6,11 +6,11 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-CODE = Path("/Users/arun/Desktop/Research/Code")
+CODE = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODE))
 from make_chapter3_figures import node
 
-BASE = Path("/Users/arun/Desktop/Research")
+BASE = Path(__file__).resolve().parents[1]
 RESULTS = BASE / "Results"
 OUT_DIR = BASE / "figures"
 CONNECTIONS = ["NPC-OPC", "AC-NPC", "MES-NPC", "AC-MES", "AC-OPC", "MES-OPC"]

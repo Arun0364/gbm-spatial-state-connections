@@ -12,7 +12,7 @@ import pandas as pd
 from scipy.optimize import nnls
 from scipy.spatial import cKDTree
 
-CODE = Path("/Users/arun/Desktop/Research/Code")
+CODE = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODE))
 from tree_compare import all_rooted_trees, case_name, rf_rooted, optimal_arborescence, greedy_arborescence
 from spatial_coalescent_sim import simulate, STATES, ROOT
@@ -20,7 +20,7 @@ from sim_grid_run import nj_graph, MIN_STATE_FRACTION, MAX_REDRAWS
 from sim_improve_run import marker_matrix, label_archetypes, weights_nnls
 from unmix import unmix
 
-BASE    = Path("/Users/arun/Desktop/Research")
+BASE    = Path(__file__).resolve().parents[1]
 OUT_CSV = BASE / "Results/sim_improve/improve2_results.csv"
 CONDITIONS = {"Clean": {}, "Clean-coalescent": {"lineage": "coalescent"},
               "Real-purity": {"mix": 0.75}, "Real-purity-coalescent": {"lineage": "coalescent", "mix": 0.75}}

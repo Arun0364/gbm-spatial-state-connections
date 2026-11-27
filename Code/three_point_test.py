@@ -13,12 +13,12 @@ import pandas as pd
 from scipy.cluster.hierarchy import linkage, cophenet
 from scipy.spatial.distance import squareform
 
-CODE = Path("/Users/arun/Desktop/Research/Code")
+CODE = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODE))
 from tree_compare import (neighbor_joining, nj_state_graph, distance_state_graph, euclid, zscore_cols,
                           all_rooted_trees, case_name, rf_rooted)
 
-BASE    = Path("/Users/arun/Desktop/Research")
+BASE    = Path(__file__).resolve().parents[1]
 OUT_DIR = BASE / "Results/three_point"
 SAMPLES = ["G4_ST2", "G740_ST1"]
 ROOT    = "NPC"

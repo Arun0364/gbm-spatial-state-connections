@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from tree_compare import all_rooted_trees, case_name
 
-BASE    = Path("/Users/arun/Desktop/Research")
+BASE    = Path(__file__).resolve().parents[1]
 AA_CSV  = Path(sys.argv[1]) if len(sys.argv) > 1 else BASE / "Results/sim_aa/aa_results.csv"
 OUT_DIR = Path(sys.argv[2]) if len(sys.argv) > 2 else BASE / "Results/sim_aa"
 STATES  = ["NPC", "AC", "OPC", "MES"]

@@ -83,13 +83,15 @@ All data are public on Gene Expression Omnibus and are not included here. [`Data
 
 ## Paths
 
-The scripts were run from one project folder laid out as this repository, with `Code/`, `Data/` and `Results/` side by side. Most scripts set the project folder as
+Every script finds the repository folder from its own location, so no paths need editing. Keep `Code/`, `Data/` and `Results/` side by side in the repository folder, as in [Layout](#layout).
 
-```
-BASE = Path("/Users/arun/Desktop/Research")
-```
+- Python scripts use `Path(__file__).resolve().parents[1]` (or the `os.path` equivalent) as the repository folder.
+- R scripts find it from the script path when run with `Rscript Code/<script>.R`, and use the working directory when sourced interactively, so start R in the repository folder.
+- MATLAB scripts use `mfilename('fullpath')`.
+- `run_replicate.sh` and `run_sim_clones.sh` expect the Python environment in `.venv/` in the repository folder. `run_sim_clones.sh` runs MIMO with `python3.13` by default. Set `MIMO_PYTHON` to use another Python with Gurobi installed.
+- `mimo_solve.py` expects the FISH_deconvolution clone in the repository folder (see [External code](#external-code-cited-not-copied)).
 
-Change this line, and the matching paths in the `.m`, `.R` and `.sh` files, to the folder holding this repository. `mimo_solve.py` sets `MIMO_DIR` to the FISH_deconvolution clone in the same way.
+The thesis was run from an earlier copy that used fixed paths. That version is tagged [`v1.0-thesis`](https://github.com/Arun0364/gbm-spatial-state-connections/tree/v1.0-thesis).
 
 ## Steps and scripts
 

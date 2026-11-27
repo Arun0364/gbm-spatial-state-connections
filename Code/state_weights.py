@@ -10,7 +10,7 @@ import pandas as pd
 import scipy.io as sio
 import scanpy as sc
 
-CODE = Path("/Users/arun/Desktop/Research/Code")
+CODE = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODE))
 from real_marker_trees import BASE, AA_DIR, SAMPLES, STATES, neftel_markers, norm_counts
 from real_markerfree_trees import markerfree_weights

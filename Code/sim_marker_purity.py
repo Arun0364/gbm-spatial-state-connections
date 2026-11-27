@@ -2,14 +2,14 @@ import sys, json, warnings
 from pathlib import Path
 import numpy as np
 import pandas as pd
-sys.path.insert(0, "/Users/arun/Desktop/Research/Code")
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 warnings.filterwarnings("ignore")
 from tree_compare import all_rooted_trees, case_name
 from spatial_coalescent_sim import simulate, STATES, ROOT
 from sim_improve_run import marker_matrix
 from marker_weights import weights_marker
 
-OUT = Path("/Users/arun/Desktop/Research/Results/marker_guided/sim_marker_purity.csv")
+OUT = Path(__file__).resolve().parents[1] / "Results" / "marker_guided" / "sim_marker_purity.csv"
 rows = []
 for mix in (0.0, 0.75):
     for i, G in enumerate(all_rooted_trees(STATES, ROOT)):

@@ -10,7 +10,7 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 import numpy as np
 import pandas as pd
 
-CODE = Path("/Users/arun/Desktop/Research/Code")
+CODE = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODE))
 from tree_compare import all_rooted_trees, case_name, rf_rooted, optimal_arborescence
 from spatial_coalescent_sim import simulate, STATES, ROOT
@@ -19,7 +19,7 @@ from sim_improve_run import that_hard_soft
 from sim_marker_robust import corrupt
 from marker_weights import weights_marker
 
-BASE      = Path("/Users/arun/Desktop/Research")
+BASE      = Path(__file__).resolve().parents[1]
 OUT_CSV   = BASE / "Results/sim_weights_fix/marker_robust_scaled.csv"
 WRONG     = [0.0, 0.25, 0.5, 0.75]
 N_MARKERS = [30, 10]

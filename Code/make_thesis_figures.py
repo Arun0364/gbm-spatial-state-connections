@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
 
-CODE = Path("/Users/arun/Desktop/Research/Code")
+CODE = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODE))
 from tree_compare import nj_bootstrap, nj_state_graph, patristic, optimal_arborescence, greedy_arborescence, case_name
 from make_chapter3_figures import draw_nj, draw_tree, N_BOOT

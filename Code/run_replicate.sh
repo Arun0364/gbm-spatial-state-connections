@@ -1,5 +1,5 @@
 #!/bin/zsh
-cd /Users/arun/Desktop/Research
+cd "$(dirname "$0")/.."
 MODE=$1
 RUNS=(
   GSE242352:SPA1_D GSE242352:SPA2_A GSE242352:SPA3_D GSE242352:SPA5_D GSE242352:SPA7_D GSE242352:SPA8_A

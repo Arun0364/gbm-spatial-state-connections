@@ -12,7 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from tree_compare import (nj_bootstrap, nj_state_graph, patristic, optimal_arborescence, greedy_arborescence,
                           rank_arborescences, that_mst, case_name, compare)
 
-BASE    = Path("/Users/arun/Desktop/Research")
+BASE    = Path(__file__).resolve().parents[1]
 OUT_DIR = BASE / "Results/tree_eval/real"
 SAMPLES = ["G4_ST2", "G740_ST1"]
 ROOT    = "NPC"

@@ -12,11 +12,11 @@ import scipy.io
 import scipy.sparse as sp
 import scanpy as sc
 
-CODE = Path("/Users/arun/Desktop/Research/Code")
+CODE = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODE))
 from Spatial_dimred import runDimredPipeline
 
-BASE = Path("/Users/arun/Desktop/Research")
+BASE = Path(__file__).resolve().parents[1]
 DATA = BASE / "Data"
 RESULTS = BASE / "Results"
 warnings.filterwarnings("ignore")

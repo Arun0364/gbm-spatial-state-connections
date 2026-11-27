@@ -324,8 +324,8 @@ def run_next_steps(
 
 for sample in ["G740_ST1", "G4_ST2"]:
     run_next_steps(
-        input_h5ad=f"/Users/arun/Desktop/Research/Results/PostAA_tumor_unmix_k4_markers/{sample}/{sample}_annotated.h5ad",
-        out_dir="/Users/arun/Desktop/Research/Results/PostAA_tumor_unmix_k4_markers",
+        input_h5ad=str(Path(__file__).resolve().parents[1] / "Results" / "PostAA_tumor_unmix_k4_markers" / sample / f"{sample}_annotated.h5ad"),
+        out_dir=str(Path(__file__).resolve().parents[1] / "Results" / "PostAA_tumor_unmix_k4_markers"),
         sample_name=sample,
         scs_quantile=0.90,
         make_plots=True,

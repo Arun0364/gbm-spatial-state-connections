@@ -14,7 +14,7 @@ from tree_compare import (all_rooted_trees, case_name, rf_rooted, rf_unrooted, n
                           zscore_cols, nj_state_graph, optimal_arborescence, greedy_arborescence, that_mst)
 from spatial_coalescent_sim import simulate, STATES, ROOT
 
-BASE    = Path("/Users/arun/Desktop/Research")
+BASE    = Path(__file__).resolve().parents[1]
 OUT_CSV = BASE / "Results/sim_grid/grid_results.csv"
 
 CONDITIONS = {

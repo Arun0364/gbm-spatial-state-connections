@@ -16,7 +16,7 @@ from spatial_coalescent_sim import simulate, STATES, ROOT
 from sim_grid_run import dpt_and_graph, nj_graph, MIN_STATE_FRACTION, MAX_REDRAWS
 from sim_improve_run import weights_nnls, that_hard_soft
 
-BASE    = Path("/Users/arun/Desktop/Research")
+BASE    = Path(__file__).resolve().parents[1]
 OUT_CSV = BASE / "Results/sim_improve/marker_robust.csv"
 WRONG     = [0.0, 0.25, 0.5, 0.75]
 N_MARKERS = [30, 10]

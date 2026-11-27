@@ -12,7 +12,7 @@ from tree_compare import (nj_bootstrap, nj_state_graph, patristic, optimal_arbor
                           case_name)
 from plot_real_trees import load_centroids, load_that, layout_rooted
 
-BASE    = Path("/Users/arun/Desktop/Research")
+BASE    = Path(__file__).resolve().parents[1]
 OUT_DIR = Path(sys.argv[1]) if len(sys.argv) > 1 else BASE / "figures"
 SAMPLES = ["G4_ST2", "G740_ST1"]
 N_BOOT  = 1000

@@ -5,7 +5,7 @@ import pandas as pd
 import os
 import re
 
-BASE      = "/Users/arun/Desktop/Research/Results"
+BASE      = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "Results")
 unmix_dir = f"{BASE}/Unmix_tumor_k4_markers"
 out_dir   = f"{BASE}/PostAA_tumor_unmix_k4_markers"
 

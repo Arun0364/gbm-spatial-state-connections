@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import nnls
 
-CODE = Path("/Users/arun/Desktop/Research/Code")
+CODE = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODE))
 from tree_compare import all_rooted_trees, case_name, rf_rooted, optimal_arborescence, greedy_arborescence
 from spatial_coalescent_sim import simulate, STATES, ROOT
@@ -20,7 +20,7 @@ from sim_improve_run import marker_matrix, label_archetypes, weights_nnls
 from sim_improve2 import CONDITIONS, dpt_graph, that
 from unmix import unmix
 
-BASE    = Path("/Users/arun/Desktop/Research")
+BASE    = Path(__file__).resolve().parents[1]
 OUT_CSV = BASE / "Results/sim_refine/refine_results.csv"
 NPC = STATES.index(ROOT)
 TOP_FRACTION = 0.05

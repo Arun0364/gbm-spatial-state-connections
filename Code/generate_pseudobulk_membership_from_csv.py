@@ -5,7 +5,7 @@ import pandas as pd
 import scanpy as sc
 from sklearn.neighbors import NearestNeighbors
 
-BASE = "/Users/arun/Desktop/Research"
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SAMPLES = {
     "G740_ST1": {

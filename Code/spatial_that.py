@@ -6,7 +6,7 @@ import warnings
 import numpy as np
 import pandas as pd
 from scipy.spatial import cKDTree
-sys.path.insert(0, "/Users/arun/Desktop/Research/Code")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 warnings.filterwarnings("ignore")
 from state_trees import WEIGHTS_DIR, build
 from real_marker_trees import AA_DIR, SAMPLES, STATES, ROOT, norm_counts, neftel_markers

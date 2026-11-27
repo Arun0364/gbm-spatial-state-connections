@@ -10,7 +10,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from scipy.optimize import linear_sum_assignment
 
-BASE    = Path("/Users/arun/Desktop/Research")
+BASE    = Path(__file__).resolve().parents[1]
 OUT_DIR = Path(sys.argv[1]) if len(sys.argv) > 1 else BASE / "figures"
 SAMPLES = ["G4_ST2", "G740_ST1"]
 STATES  = ["AC", "MES", "NPC", "OPC"]

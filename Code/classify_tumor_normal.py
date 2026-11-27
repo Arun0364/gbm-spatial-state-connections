@@ -7,7 +7,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-BASE = "/Users/arun/Desktop/Research"
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SAMPLES = ["G740_ST1", "G4_ST2"]
 
 PATHS = {

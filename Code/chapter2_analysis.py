@@ -13,7 +13,7 @@ from scipy.spatial import cKDTree
 from scipy.stats import norm, mannwhitneyu, spearmanr
 from scipy.optimize import linear_sum_assignment
 
-CODE = Path("/Users/arun/Desktop/Research/Code")
+CODE = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODE))
 from real_marker_trees import SAMPLES, STATES, norm_counts
 from state_weights import BASE, load_tumor

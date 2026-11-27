@@ -10,13 +10,13 @@ import numpy as np
 import pandas as pd
 import scanpy as sc
 
-CODE = Path("/Users/arun/Desktop/Research/Code")
+CODE = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODE))
 from tree_compare import (nj_bootstrap, nj_state_graph, patristic, greedy_arborescence, optimal_arborescence,
                           rank_arborescences, that_mst, case_name, compare)
 from marker_weights import weights_gene_sd as weights_nnls
 
-BASE    = Path("/Users/arun/Desktop/Research")
+BASE    = Path(__file__).resolve().parents[1]
 AA_DIR  = BASE / "Results/PostAA_tumor_unmix_k4_markers"
 INT_DIR = BASE / "Results/archetype_mimo_integration_k4_markers"
 OUT_DIR = BASE / "Results/real_marker_trees_v2"

@@ -8,11 +8,11 @@ import pandas as pd
 import scipy.io
 import scanpy as sc
 
-CODE = Path("/Users/arun/Desktop/Research/Code")
+CODE = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODE))
 from classify_tumor_normal import classify_spot, strip_suffix
 
-BASE = Path("/Users/arun/Desktop/Research")
+BASE = Path(__file__).resolve().parents[1]
 RESULTS = BASE / "Results"
 CONF_THRESH = 0.1
 warnings.filterwarnings("ignore")

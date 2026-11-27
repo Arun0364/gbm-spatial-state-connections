@@ -10,10 +10,14 @@ suppressPackageStartupMessages(({
 plan(sequential)
 options(future.globals.maxSize = 8 * 1024^3)
 
-ST1_DIR <- '/Users/arun/Desktop/Research/Data/G740_ST1'
-ST2_DIR <- '/Users/arun/Desktop/Research/Data/G4_ST2'
+project_root <- local({
+  a <- grep("^--file=", commandArgs(FALSE), value = TRUE)
+  if (length(a)) normalizePath(file.path(dirname(sub("^--file=", "", a[1])), "..")) else getwd()
+})
+ST1_DIR <- file.path(project_root, "Data", "G740_ST1")
+ST2_DIR <- file.path(project_root, "Data", "G4_ST2")
 
-OUTDIR <- '/Users/arun/Desktop/Research/Results/neftel_outputs_curated'
+OUTDIR <- file.path(project_root, "Results", "neftel_outputs_curated")
 dir.create(OUTDIR, recursive = TRUE, showWarnings = FALSE)
 
 NDIMS <- 30

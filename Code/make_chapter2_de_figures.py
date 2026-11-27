@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
 
-BASE    = Path("/Users/arun/Desktop/Research")
+BASE    = Path(__file__).resolve().parents[1]
 DE_DIR  = BASE / "Results/phylogeny_clone_lineage"
 OUT_DIR = Path(sys.argv[1]) if len(sys.argv) > 1 else BASE / "figures"
 SAMPLES = ["G4_ST2", "G740_ST1"]

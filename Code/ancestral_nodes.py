@@ -12,11 +12,11 @@ import numpy as np
 import pandas as pd
 import networkx as nx
 
-CODE = Path("/Users/arun/Desktop/Research/Code")
+CODE = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODE))
 from tree_compare import neighbor_joining, euclid, zscore_cols, all_rooted_trees, case_name
 
-BASE    = Path("/Users/arun/Desktop/Research")
+BASE    = Path(__file__).resolve().parents[1]
 OUT_DIR = BASE / "Results/ancestral_nodes"
 SAMPLES = ["G4_ST2", "G740_ST1"]
 OBS     = ["NPC", "AC", "OPC", "MES"]

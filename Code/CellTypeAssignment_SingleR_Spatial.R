@@ -9,8 +9,12 @@ suppressPackageStartupMessages({
     library(SummarizedExperiment)
 })
 
-visium_dir <- "/Users/arun/Desktop/Research/Data/G4_ST2"
-outdir <- "/Users/arun/Desktop/Research/Results/CellTypeAssignment/G4_ST2_SingleR"
+project_root <- local({
+  a <- grep("^--file=", commandArgs(FALSE), value = TRUE)
+  if (length(a)) normalizePath(file.path(dirname(sub("^--file=", "", a[1])), "..")) else getwd()
+})
+visium_dir <- file.path(project_root, "Data", "G4_ST2")
+outdir <- file.path(project_root, "Results", "CellTypeAssignment", "G4_ST2_SingleR")
 dir.create(outdir, showWarnings = FALSE, recursive = TRUE)
 
 find_one <- function(dir, patterns) {

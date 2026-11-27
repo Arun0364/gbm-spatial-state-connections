@@ -10,7 +10,7 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 import numpy as np
 import pandas as pd
 
-CODE = Path("/Users/arun/Desktop/Research/Code")
+CODE = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODE))
 from tree_compare import all_rooted_trees, case_name, optimal_arborescence, greedy_arborescence, that_mst
 from spatial_coalescent_sim import simulate, STATES, ROOT
@@ -19,7 +19,7 @@ from sim_improve_run import marker_matrix
 from sim_improve2 import dpt_graph, that
 from marker_weights import weights_gene_sd
 
-BASE    = Path("/Users/arun/Desktop/Research")
+BASE    = Path(__file__).resolve().parents[1]
 OUT_DIR = BASE / "Results/marker_guided/marker_guided_sim"
 METHODS = ["NJ", "That_greedy", "That_arb", "That_mst"]
 

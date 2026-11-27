@@ -5,7 +5,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-BASE = Path("/Users/arun/Desktop/Research")
+BASE = Path(__file__).resolve().parents[1]
 OUT = BASE / "figures"
 SAMPLES = ["G4_ST2", "G740_ST1"]
 plt.rcParams.update({"font.family": "Times New Roman", "font.size": 10, "axes.titlesize": 10})
