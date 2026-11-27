@@ -13,6 +13,7 @@ Master's thesis, Quantitative Biology and Bioinformatics, 2026
 [Steps and scripts](#steps-and-scripts) &ensp;·&ensp;
 [Citation](#citation)
 
+[![tests](https://github.com/Arun0364/gbm-spatial-state-connections/actions/workflows/tests.yml/badge.svg)](https://github.com/Arun0364/gbm-spatial-state-connections/actions/workflows/tests.yml)
 ![Python 3.14](https://img.shields.io/badge/python-3.14-blue)
 ![R 4.5.1](https://img.shields.io/badge/R-4.5.1-blue)
 ![License: MIT](https://img.shields.io/badge/license-MIT-yellow)
@@ -58,8 +59,10 @@ All evidence is computational. There is no laboratory work.
 Code/                      all scripts, flat, because they import each other by name
 figures/algorithm_sources/ LaTeX sources for Algorithms 2.1, 2.2, 3.1 and 3.2
 docs/assets/               figures shown in this README
+tests/                     tests of the shared modules on synthetic data
 renv.lock                  R environment (R 4.5.1)
 requirements.txt           Python environment (Python 3.14)
+requirements-test.txt      the smaller environment the tests need
 Data/                      not tracked except Data/README.md, see Data
 Results/                   not tracked, created by the scripts
 ```
@@ -193,6 +196,22 @@ Rscript -e 'install.packages("renv"); renv::restore()'
 ```
 
 MATLAB is needed for the two `.m` files.
+
+## Tests
+
+The shared modules are tested on synthetic data with a known answer, so the tests need no data and run in about a second. They run on every push through GitHub Actions.
+
+```
+pip install -r requirements-test.txt
+pytest -q
+```
+
+| Test file | What it checks |
+|---|---|
+| `tests/test_tree_compare.py` | Neighbor joining recovers additive trees and their distances exactly; the state graph recovers all 16 four-state trees; the optimal arborescence matches the best-ranked tree; the module's own self-test |
+| `tests/test_unmix.py` | On mixtures of three known archetypes, the Python UNMIX port gives fractions that sum to one and track the true mixture (r > 0.95), and archetypes within 20% of the truth |
+| `tests/test_marker_weights.py` | Marker-guided weights are proportions and track the true state weights (r > 0.9) |
+| `tests/test_tree_assumptions.py` | The three-point and four-point tests are zero on ultrametric and additive distances and positive on a non-additive one |
 
 ## Citation
 
