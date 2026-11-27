@@ -1,6 +1,6 @@
 <div align="center">
 
-# gbm-spatial-state-connections
+# GBM Spatial State Connections
 
 ### Inferring relationships among glioblastoma cell states from spatial transcriptomics: from archetypal analysis to supported connections
 
