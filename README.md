@@ -8,6 +8,7 @@ Arun Sujatha Bharath Raj<br>
 Schwartz Lab, Carnegie Mellon University<br>
 Master's thesis, Quantitative Biology and Bioinformatics, 2026
 
+[Thesis (PDF)](thesis/Thesis_Arun.pdf) &ensp;·&ensp;
 [Key findings](#key-findings) &ensp;·&ensp;
 [Data](#data) &ensp;·&ensp;
 [Steps and scripts](#steps-and-scripts) &ensp;·&ensp;
@@ -60,6 +61,7 @@ Code/                      all scripts, flat, because they import each other by 
 figures/algorithm_sources/ LaTeX sources for Algorithms 2.1, 2.2, 3.1 and 3.2
 docs/assets/               figures shown in this README
 tests/                     tests of the shared modules on synthetic data
+thesis/                    the thesis as submitted (PDF)
 renv.lock                  R environment (R 4.5.1)
 requirements.txt           Python environment (Python 3.14)
 requirements-test.txt      the smaller environment the tests need
@@ -215,7 +217,7 @@ pytest -q
 
 ## Citation
 
-If you use this code, please cite the thesis:
+If you use this code, please cite the thesis, which is included as [`thesis/Thesis_Arun.pdf`](thesis/Thesis_Arun.pdf):
 
 > Sujatha Bharath Raj, A. (2026). *Inferring relationships among glioblastoma cell states from spatial transcriptomics: From archetypal analysis to supported connections* [Master's thesis, Carnegie Mellon University].
 
