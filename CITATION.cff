@@ -6,6 +6,7 @@ authors:
   - given-names: Arunannamalai
     family-names: Sujatha Bharath Raj
     affiliation: Carnegie Mellon University
+license: MIT
 repository-code: "https://github.com/Arun0364/gbm-spatial-state-connections"
 keywords:
   - glioblastoma

@@ -15,6 +15,7 @@ Master's thesis, Quantitative Biology and Bioinformatics, 2026
 
 ![Python 3.14](https://img.shields.io/badge/python-3.14-blue)
 ![R 4.5.1](https://img.shields.io/badge/R-4.5.1-blue)
+![License: MIT](https://img.shields.io/badge/license-MIT-yellow)
 ![Status: thesis defended](https://img.shields.io/badge/status-thesis%20defended-green)
 ![Evidence: computational only](https://img.shields.io/badge/evidence-computational%20only-lightgrey)
 
@@ -197,4 +198,8 @@ If you use this code, please cite the thesis:
 
 > Sujatha Bharath Raj, A. (2026). *Inferring relationships among glioblastoma cell states from spatial transcriptomics: From archetypal analysis to supported connections* [Master's thesis, Carnegie Mellon University].
 
-GitHub also shows a "Cite this repository" button from [`CITATION.cff`](CITATION.cff).
+GitHub also shows a "Cite this repository" link from [`CITATION.cff`](CITATION.cff).
+
+## License
+
+The code in this repository is released under the [MIT License](LICENSE). External tools (MIMO, UNMIX, MosaicSim) are not included and keep their own licenses. The data are from GEO and keep the terms of their original publications.
