@@ -227,4 +227,4 @@ GitHub also shows a "Cite this repository" link from [`CITATION.cff`](CITATION.c
 
 The code in this repository is released under the [MIT License](LICENSE). External tools (MIMO, UNMIX, MosaicSim) are not included and keep their own licenses. The data are from GEO and keep the terms of their original publications.
 
-The MIT license covers the code. The thesis PDF in thesis/ is © Arunannamalai Sujatha Bharath Raj, 2026, all rights reserved.
+The thesis PDF in thesis/ is © Arunannamalai Sujatha Bharath Raj, 2026, all rights reserved, and is not covered by the MIT license.
